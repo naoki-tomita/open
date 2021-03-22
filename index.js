@@ -101,7 +101,7 @@ const open = async (target, options) => {
 	}
 
 	let command;
-	const cliArguments = [];
+	const cliArguments = options.cliArguments || [];
 	const childProcessOptions = {};
 
 	if (platform === 'darwin') {
@@ -192,7 +192,7 @@ const open = async (target, options) => {
 		}
 	}
 
-	cliArguments.push(target);
+	target && cliArguments.push(target);
 
 	if (platform === 'darwin' && appArguments.length > 0) {
 		cliArguments.push('--args', ...appArguments);

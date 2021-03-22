@@ -37,9 +37,17 @@ declare namespace open {
 
 		We do not recommend setting this option. The convention for success is exit code zero.
 
+
 		@default false
 		*/
 		readonly allowNonzeroExitCode?: boolean;
+
+		/**
+		 Set arguments for OS open command.
+
+		 @default []
+		 */
+		readonly cliArguments?: string[];
 	}
 
 	type AppName =

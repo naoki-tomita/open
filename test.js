@@ -69,3 +69,10 @@ test('open URL with query strings and URL reserved characters', async t => {
 test('open URL with query strings and URL reserved characters with `url` option', async t => {
 	await t.notThrowsAsync(open('https://httpbin.org/get?amp=%26&colon=%3A&comma=%2C&commat=%40&dollar=%24&equals=%3D&plus=%2B&quest=%3F&semi=%3B&sol=%2F', {url: true}));
 });
+
+test('open with cliArguments -n for mac.', async t => {
+	await t.notThrowsAsync(async () => {
+		const proc = await open('', { app: { name: open.apps.chrome, arguments: ['https://sindresorhus.com', '--incognito'] }, cliArguments: ['-n'] });
+		t.deepEqual(proc.spawnargs, ['open', '-n', '-a', open.apps.chrome, '--args', 'https://sindresorhus.com', '--incognito']);
+	});
+});
